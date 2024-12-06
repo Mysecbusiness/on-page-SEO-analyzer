@@ -251,12 +251,12 @@ async function checkBrokenLinks($) {
     return brokenLinks;
 }
 
-// async function checkContentUniqueness($, url) {
-//     return {
-//         unique: 'N/A',
-//         message: 'Uniqueness check not implemented',
-//     };
-// }
+async function checkContentUniqueness($, url) {
+    return {
+        unique: 'N/A',
+        message: 'Uniqueness check not implemented',
+    };
+}
 
 function checkLanguageTag($) {
     const lang = $('html').attr('lang');
@@ -319,7 +319,9 @@ function formatSeoResponse(seoData) {
         timestamp: new Date().toISOString(),
     };
 }
-
+app.get('/', async (req, res) => {
+    res.json("this is the on page seo analyzer");
+});
 app.get('/analyze', async (req, res) => {
     const { url } = req.body;
 
